@@ -15,11 +15,9 @@ const ChapterMarkers: React.FC<ChapterMarkersProps> = ({
   duration,
   onSeekToChapter,
 }) => {
-  // Find the active chapter based on current time
   const getActiveChapterIndex = () => {
     if (chapters.length === 0) return -1;
 
-    // Sort chapters by time to ensure proper order
     const sortedChapters = [...chapters].sort((a, b) => a.atSec - b.atSec);
 
     for (let i = sortedChapters.length - 1; i >= 0; i--) {
@@ -65,7 +63,6 @@ const ChapterMarkers: React.FC<ChapterMarkersProps> = ({
         ))}
       </div>
 
-      {/* Progress indicator for chapters */}
       <div className="relative mt-6 ">
         <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
           <div
@@ -76,7 +73,6 @@ const ChapterMarkers: React.FC<ChapterMarkersProps> = ({
           />
         </div>
 
-        {/* Chapter markers on progress bar */}
         <div className="absolute top-0 w-full h-2">
           {chapters.map((chapter, index) => (
             <div

@@ -49,12 +49,10 @@ const BottomDrawer: React.FC<BottomDrawerProps> = ({
   const transcriptRef = useRef<HTMLDivElement>(null);
   const activeTranscriptRef = useRef<HTMLDivElement>(null);
 
-  // Find current active transcript cue
   const currentCue = transcript.find(
     (cue) => currentTime >= cue.startTime && currentTime <= cue.endTime
   );
 
-  // Auto-scroll to active transcript cue
   useEffect(() => {
     if (activeTranscriptRef.current && activeTab === "transcript") {
       activeTranscriptRef.current.scrollIntoView({
@@ -122,7 +120,6 @@ const BottomDrawer: React.FC<BottomDrawerProps> = ({
         Transcript & Notes
       </h4>
       <div className="bg-white border-t-4 rounded-lg border-[#0b51ff] shadow-lg">
-        {/* Drawer Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-300 bg-gray-50">
           <div className="flex flex-wrap gap-4">
             <button
@@ -168,7 +165,6 @@ const BottomDrawer: React.FC<BottomDrawerProps> = ({
           </div>
         </div>
 
-        {/* Drawer Content */}
         <div className="h-80 overflow-y-auto">
           {activeTab === "overview" && (
             <div className="p-6 space-y-4">
@@ -337,7 +333,6 @@ const BottomDrawer: React.FC<BottomDrawerProps> = ({
                 )}
               </div>
 
-              {/* Notes List */}
               <div className="space-y-3">
                 {notes.length === 0 ? (
                   <p className="text-gray-500 text-center py-8">

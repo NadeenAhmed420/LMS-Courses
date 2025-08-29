@@ -9,8 +9,8 @@ interface CourseSideBarProps {
   activeCourseIndex: number;
   activeLessonIndex: number;
   onSelectCourse: (courseIndex: number, lessonIndex: number) => void;
-  variant?: "sidebar" | "drawer"; // <--- new
-  onClose?: () => void; // <--- for drawer close
+  variant?: "sidebar" | "drawer"; 
+  onClose?: () => void; 
 }
 
 const CourseSideBar: React.FC<CourseSideBarProps> = ({

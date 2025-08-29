@@ -54,7 +54,6 @@ export default function App() {
     [currentCourse.lessons]
   );
 
-  // Save notes to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
@@ -83,7 +82,7 @@ export default function App() {
       lessonId: currentLesson.id,
       courseId: currentCourse.id,
     };
-    setNotes((prev) => [...prev, newNote]); // localStorage effect will save automatically
+    setNotes((prev) => [...prev, newNote]);
   };
 
   const handleDeleteNote = (noteId: string) => {
@@ -91,7 +90,6 @@ export default function App() {
   };
 
   const handleLessonCompleted = () => {
-    // ✅ Only mark complete, no navigation
     setCourses((prevCourses) =>
       prevCourses.map((course, courseIdx) =>
         courseIdx === currentCourseIndex
@@ -156,7 +154,6 @@ export default function App() {
 
   return (
     <div className="my-5 px-2">
-      {/* Mobile Drawer Toggle */}
       <div className="flex justify-end mb-2 md:hidden">
         <button
           onClick={() => setIsDrawerOpen(true)}
@@ -178,9 +175,9 @@ export default function App() {
             key={currentLesson.id}
             src={currentLesson.url}
             transcript={currentLesson.transcript || []}
-            onCompleted={handleLessonCompleted} // ✅ just marks complete at 90%
+            onCompleted={handleLessonCompleted}
             onPrevChapter={handlePrevLesson}
-            onNextChapter={handleNextLesson} // ✅ video onEnded calls this to move
+            onNextChapter={handleNextLesson}
             onTimeUpdate={setCurrentTime}
             seekToTime={currentTime}
             hasPrev={hasPrev}
@@ -196,7 +193,6 @@ export default function App() {
             />
           )}
 
-
           <BottomDrawer
             currentLesson={currentLesson}
             currentCourse={currentCourse}
@@ -209,7 +205,6 @@ export default function App() {
           />
         </div>
 
-        {/* Desktop Sidebar */}
         <div className="hidden lg:block col-span-12 lg:col-span-3">
           <CourseSideBar
             courses={courses}
@@ -221,7 +216,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
       {isDrawerOpen && (
         <div className="fixed inset-0 z-50 flex">
           <div

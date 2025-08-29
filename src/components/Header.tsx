@@ -4,7 +4,7 @@ import { type Course } from "../types";
 interface HeaderProps {
   title: string;
   breadcrumb: string[];
-  progress: number; // 0–100
+  progress: number; 
   currentCourse: Course;
 }
 

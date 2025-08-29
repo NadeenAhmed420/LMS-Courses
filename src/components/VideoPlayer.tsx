@@ -70,13 +70,11 @@ export default function VideoPlayer({
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      // Only process keys if the video player is focused
       if (!isFocused) return;
 
       const video = videoRef.current;
       if (!video) return;
 
-      // Don't interfere with inputs or textareas
       if (
         e.target instanceof HTMLInputElement ||
         e.target instanceof HTMLTextAreaElement
@@ -129,12 +127,7 @@ export default function VideoPlayer({
         case "8":
         case "9":
           e.preventDefault();
-          // // Calculate percentage based on numeric key (0-9)
-          // const percent = e.key === "0" ? 0 : parseInt(e.key, 10) / 10;
-          // // Calculate new time position
-          // const newTime = Math.min(duration * percent, duration);
-          // // Seek to new position
-          // handleSeek(videoRef, String(newTime), setCurrentTime);
+
           break;
         case ">":
         case ".":
@@ -165,7 +158,6 @@ export default function VideoPlayer({
     [isFocused, volume, duration, isPlaying, playbackRate]
   );
 
-  // Add keyboard event listeners
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -192,7 +184,6 @@ export default function VideoPlayer({
       const currentTime = video.currentTime;
       setCurrentTime(currentTime);
 
-      // Update captions text based on current time
       const currentCaption = transcript.find(
         (t) => currentTime >= t.startTime && currentTime <= t.endTime
       );
@@ -226,12 +217,12 @@ export default function VideoPlayer({
     }
   }, [seekToTime]);
 
-useEffect(() => {
-  if (!completedReported && duration > 0 && currentTime / duration >= 0.9) {
-    onCompleted(); // ✅ Only mark complete at 90%
-    setCompletedReported(true);
-  }
-}, [currentTime, duration, completedReported, onCompleted]);
+  useEffect(() => {
+    if (!completedReported && duration > 0 && currentTime / duration >= 0.9) {
+      onCompleted();
+      setCompletedReported(true);
+    }
+  }, [currentTime, duration, completedReported, onCompleted]);
 
   return (
     <div
@@ -239,13 +230,13 @@ useEffect(() => {
       className="relative w-full bg-black rounded-xl overflow-hidden shadow-md my-8"
       tabIndex={0}
     >
-  <video
-  ref={videoRef}
-  className="w-full"
-  src={src}
-  onClick={() => togglePlay(videoRef, setIsPlaying, setFeedbackIcon)}
-  onEnded={onNextChapter} // ✅ Only navigate when video fully ends
-/>
+      <video
+        ref={videoRef}
+        className="w-full"
+        src={src}
+        onClick={() => togglePlay(videoRef, setIsPlaying, setFeedbackIcon)}
+        onEnded={onNextChapter}
+      />
       {captionsOn && captionsText && (
         <div className="absolute bottom-24 left-0 right-0 flex justify-center">
           <div className="bg-black/70 text-white px-4 py-2 rounded-lg max-w-3xl text-center">
@@ -316,7 +307,6 @@ useEffect(() => {
         />
       </div>
 
-      {/* Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between justify-start items-start gap-3 p-3 bg-gray-900 text-white text-sm">
         <div className="flex items-center gap-3">
           <button
@@ -349,7 +339,6 @@ useEffect(() => {
         </div>
 
         <div className="flex items-center gap-3">
-          {/* Volume Control */}
           <div className="flex items-center gap-2 w-40">
             <button
               onClick={() => toggleMute(videoRef, setVolume)}
@@ -441,7 +430,6 @@ useEffect(() => {
         </div>
       )}
 
-      {/* Tailwind animation */}
       <style>{`
         @keyframes slide-fade {
           0% { opacity: 0; transform: translateY(10px) scale(1); }
