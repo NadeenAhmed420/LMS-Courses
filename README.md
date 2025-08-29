@@ -1,69 +1,30 @@
-# React + TypeScript + Vite
+## Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project enhances an online course platform using **React + TypeScript**.
 
-Currently, two official plugins are available:
+Key completed features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Already i did the first 5
 
-## Expanding the ESLint configuration
+- ✅ **Storage** – Lesson progress - Notes are saved in the local storage
+- ✅ **Overview & Resources** – Added lesson overviews and downloadable resources.
+- ✅ **Video Accessibility** – Keyboard controls, captions toggle, playback speed adjustment, and visual feedback.
+- ✅ **Lesson Progress Automation** – Lessons mark as **complete at 90%** and automatically move to the next lesson at 100%.
+- ✅ **Notes & Transcript Features** – Timestamped notes with sorting and transcript highlighting.
+- ✅ **UX Improvements** – Chapter markers, active lesson highlighting, and smooth transitions.
+- ⬜ **Related Courses Section** – Suggest courses based on current topics.
+- ⬜ **Bookmarking & Favorites** – Mark lessons or resources for quick access.
+- ⬜ **Dark Mode** – Optional dark theme for better readability.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Setup
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Clone the repository:
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+git clone https://github.com/NadeenAhmed420/LMS-Courses.git
+cd my-project
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. Install dependencies:
+   npm install
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3. Start the development server
+   npm run dev

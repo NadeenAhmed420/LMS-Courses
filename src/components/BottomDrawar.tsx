@@ -165,9 +165,9 @@ const BottomDrawer: React.FC<BottomDrawerProps> = ({
           </div>
         </div>
 
-        <div className="h-80 overflow-y-auto">
+        <div className="h-80 overflow-y-auto mt-8">
           {activeTab === "overview" && (
-            <div className="p-6 space-y-4">
+            <div className="px-3 lg:p-5 space-y-4">
               <div className="bg-gray-50 rounded-lg p-4 border border-gray-300">
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="text-xl font-semibold text-gray-800">

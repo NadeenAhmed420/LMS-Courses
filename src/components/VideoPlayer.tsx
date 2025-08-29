@@ -395,7 +395,7 @@ export default function VideoPlayer({
       </div>
 
       {isFocused && (
-        <div className="absolute top-0 left-0 right-0 bg-black/100 text-white text-xs p-2 text-center ">
+        <div className="hidden lg:block absolute top-0 left-0 right-0 bg-black/100 text-white text-xs p-2 text-center ">
           <span className="mr-5">
             <span className="px-2 py-0.5 bg-gray-600 rounded">Space</span>{" "}
             Play/Pause
